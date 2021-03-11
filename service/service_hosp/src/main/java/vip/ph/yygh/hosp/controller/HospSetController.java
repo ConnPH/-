@@ -22,6 +22,7 @@ import java.util.Random;
 @Api(tags = "医院设置信息")
 @RestController
 @RequestMapping("admin/hosp")
+@CrossOrigin
 public class HospSetController {
 
 
@@ -55,7 +56,7 @@ public class HospSetController {
     public Result page(@RequestBody(required = false) HospitalSetQueryVo hospitalQueryVo, @PathVariable Long current, @PathVariable Long limit){
 
 
-        Page<HospitalSet> page = new Page<>();
+        Page<HospitalSet> page = new Page<>(current,limit);
 
         QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
         String hosname = hospitalQueryVo.getHosname();
@@ -119,7 +120,7 @@ public class HospSetController {
 
 
     @ApiOperation("批量删除医院设置")
-    @DeleteMapping
+    @DeleteMapping("batchRemoveHospSet")
     public Result batchRemoveHospSet(@RequestBody List<Long> ids){
 
         hospSetService.removeByIds(ids);
