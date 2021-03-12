@@ -4,18 +4,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import vip.ph.yygh.common.utils.MD5;
 import vip.ph.yygh.common.utils.Result;
 import vip.ph.yygh.hosp.service.HospSetService;
 import vip.ph.yygh.model.hosp.HospitalSet;
-import vip.ph.yygh.model.vo.hosp.HospitalQueryVo;
 import vip.ph.yygh.model.vo.hosp.HospitalSetQueryVo;
 
 import javax.annotation.Resource;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Random;
 

@@ -4,4 +4,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import vip.ph.yygh.model.hosp.HospitalSet;
 
 public interface HospSetService extends IService<HospitalSet>  {
+    String getSignKey(String hoscode);
 }
