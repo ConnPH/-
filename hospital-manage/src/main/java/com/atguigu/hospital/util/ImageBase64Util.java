@@ -8,8 +8,9 @@ import java.io.InputStream;
 
 public class ImageBase64Util {
     public static void main(String[] args) {
-        String imageFile= "D:\\yygh_work\\xh.png";// 待处理的图片
+        String imageFile= "C:\\Users\\15085\\Desktop\\华山\\1.jpg";// 待处理的图片
         System.out.println(getImageString(imageFile));
+
     }
 
     public static String getImageString(String imageFile){

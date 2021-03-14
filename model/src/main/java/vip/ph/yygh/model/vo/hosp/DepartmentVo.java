@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @ApiModel(description = "Department")
-public class DepartmentVo {
+public class DepartmentVo { // 1196.56
 
 	@ApiModelProperty(value = "科室编号")
 	private String depcode;

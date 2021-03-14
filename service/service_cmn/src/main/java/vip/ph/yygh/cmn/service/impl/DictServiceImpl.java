@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import vip.ph.yygh.cmn.mapper.DictMapper;
 import vip.ph.yygh.cmn.service.DictService;
 import vip.ph.yygh.model.cmn.Dict;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements DictService {
@@ -68,6 +70,38 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Dict getDictByDictCode(String dictCode){
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code",dictCode);
+        Dict codeDict = baseMapper.selectOne(wrapper);
+        return codeDict;
+    }
+
+    @Override
+    public String getNameLevel(String dictCode, String value) {
+
+        if (StringUtils.isEmpty(dictCode)){
+            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+            wrapper.eq("value",value);
+            Dict dict = baseMapper.selectOne(wrapper);
+            return dict.getName();
+        }else {
+            Dict byDictCode = this.getDictByDictCode(dictCode);
+            Long codeDictId = byDictCode.getId();
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("parent_id", codeDictId).eq("value", value));
+
+            return dict.getName();
+        }
+
+    }
+
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        Dict codeDict = this.getDictByDictCode(dictCode);
+        if(null == codeDict) return null;
+        return this.findChildData(codeDict.getId());
     }
 
 

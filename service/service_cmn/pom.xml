@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_smn</artifactId>
+    <artifactId>service_cmn</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,13 +17,10 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>2.1.1</version>
         </dependency>
     </dependencies>
-
 
 </project>
